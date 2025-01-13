@@ -11,14 +11,13 @@ file_to_output = '/Users/kimberlywessler/python-challenge/PyPoll/Analysis/electi
 
 # Initialize variables to track the election data
 total_votes = 0  # Track the total number of votes cast
+percentage = 0
+winning_count = 0
+winning_candidate = ""
 
 # Define lists and dictionaries to track candidate names and vote counts
-
-
-
-# Winning Candidate and Winning Count Tracker
-
-
+candidate_votes = {}
+vote_list = []
 
 # Open the CSV file and process it
 with open(file_to_load) as election_data:
@@ -30,42 +29,53 @@ with open(file_to_load) as election_data:
     # Loop through each row of the dataset and process it
     for row in reader:
 
-        # Print a loading indicator (for large datasets)
-        print(". ", end="")
-
         # Increment the total vote count for each row
-
+        total_votes += 1
 
         # Get the candidate's name from the row
-
+        candidate_name = row[2]
 
         # If the candidate is not already in the candidate list, add them
-
+        if candidate_name not in vote_list:
+            vote_list.append(candidate_name)
+            candidate_votes[candidate_name] = 0
 
         # Add a vote to the candidate's count
+        candidate_votes[candidate_name] += 1
 
+         # Print the total vote count (to terminal)
+print("Election Results")
+print("-------------------------")
+print(f"Total Votes: {total_votes}")
+print("--------------------------")
 
-# Open a text file to save the output
-with open(file_to_output, "w") as txt_file:
+    # Open a text file to save the output
+with open(file_to_output, "w") as txt_file: 
 
-    # Print the total vote count (to terminal)
+    txt_file.write("Election Results\n")
+    txt_file.write("-------------------------\n")
+    txt_file.write(f"Total Votes: {total_votes}\n")
+    txt_file.write("--------------------------\n")
 
-
-    # Write the total vote count to the text file
-
-
-    # Loop through the candidates to determine vote percentages and identify the winner
-
-
-        # Get the vote count and calculate the percentage
-
-     # Update the winning candidate if this one has more votes
-
+        # Loop through the candidates to determine vote percentages and identify the winner
+    for candidate_name in vote_list:
+        votes = candidate_votes[candidate_name]
+        percentage = (votes/total_votes) * 100
 
         # Print and save each candidate's vote count and percentage
+        print(f"{candidate_name}: {percentage:.2f}% ({votes})")
+        txt_file.write(f"{candidate_name}: {percentage:.2f}% ({votes})\n") 
 
+     # Update the winning candidate if this one has more votes
+        if votes > winning_count:
+            winning_count = votes
+            winning_candidate = candidate_name
 
     # Generate and print the winning candidate summary
-
-
-    # Save the winning candidate summary to the text file     
+    print("--------------------------")
+    print(f"Winner: {winning_candidate}")
+    print("--------------------------")
+    
+    txt_file.write("--------------------------\n")
+    txt_file.write(f"Winner: {winning_candidate}\n")
+    txt_file.write("--------------------------\n")

@@ -9,6 +9,6 @@ The code also writes the results to the text file named budget_analysis.txt in t
 
 For PyPoll I wrote a code that produced the following results which calculated the winner of the election and the number and percentage of votes for each candidate:
 
-
+![Screenshot 2025-01-13 at 1 03 34 PM](https://github.com/user-attachments/assets/d6e852e6-8c34-4161-ae1f-fcea23dbfefe)
 
 The code also writes the results to the text file named election_analysis.txt in the Analysis folder under the PyPoll folder.

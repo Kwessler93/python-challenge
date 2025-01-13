@@ -6,8 +6,8 @@ import csv
 import os
 
 # Files to load and output (update with correct file paths)
-file_to_load = os.path.join("Resources", "election_data.csv")  # Input file path
-file_to_output = os.path.join("analysis", "election_analysis.txt")  # Output file path
+file_to_load = '/Users/kimberlywessler/python-challenge/PyPoll/Resources/election_data.csv'  # Input file path
+file_to_output = '/Users/kimberlywessler/python-challenge/PyPoll/Analysis/election_analysis.txt'  # Output file path
 
 # Initialize variables to track the election data
 total_votes = 0  # Track the total number of votes cast
@@ -15,7 +15,9 @@ total_votes = 0  # Track the total number of votes cast
 # Define lists and dictionaries to track candidate names and vote counts
 
 
+
 # Winning Candidate and Winning Count Tracker
+
 
 
 # Open the CSV file and process it
